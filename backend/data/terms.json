@@ -1,0 +1,1110 @@
+[
+  {
+    "id": "algorithm",
+    "term": "Algorithm",
+    "aliases": ["algo"],
+    "short_summary": "A step-by-step procedure for solving a problem or completing a task.",
+    "definition": "An algorithm is a finite sequence of well-defined instructions used to solve a specific problem or perform a computation. It takes some input, processes it through a series of logical steps, and produces an output. Good algorithms are correct, efficient, and easy to understand.",
+    "example": "A recipe for baking a cake is an algorithm: a list of ingredients followed by ordered instructions that produce the desired result.",
+    "difficulty": "beginner",
+    "related_terms": ["data-structure", "time-complexity", "space-complexity", "pseudocode"],
+    "tags": ["fundamentals", "algorithms"]
+  },
+  {
+    "id": "data-structure",
+    "term": "Data Structure",
+    "aliases": ["ds"],
+    "short_summary": "A way of organizing and storing data so it can be accessed and modified efficiently.",
+    "definition": "A data structure is a specialized format for organizing, processing, retrieving, and storing data. The right data structure lets algorithms run faster and use less memory. Examples include arrays, linked lists, stacks, queues, trees, and graphs.",
+    "example": "A phone contacts app might use a hash table so looking up a name by phone number happens in constant time.",
+    "difficulty": "beginner",
+    "related_terms": ["algorithm", "array", "linked-list", "hash-table", "tree", "graph"],
+    "tags": ["fundamentals", "data-structures"]
+  },
+  {
+    "id": "big-o-notation",
+    "term": "Big-O Notation",
+    "aliases": ["big o", "asymptotic notation", "complexity notation"],
+    "short_summary": "A notation that describes the upper bound of an algorithm's growth rate as input size increases.",
+    "definition": "Big-O notation describes how much the time or space requirements of an algorithm grow relative to the input size n, in the worst case. It ignores constants and lower-order terms, focusing on the dominant term. Common classes are O(1), O(log n), O(n), O(n log n), O(n^2), and O(2^n).",
+    "example": "Scanning every item in an array once is O(n). Scanning every pair of items with nested loops is O(n^2).",
+    "difficulty": "beginner",
+    "related_terms": ["time-complexity", "space-complexity", "algorithm"],
+    "tags": ["fundamentals", "algorithms", "complexity"]
+  },
+  {
+    "id": "time-complexity",
+    "term": "Time Complexity",
+    "aliases": ["runtime complexity"],
+    "short_summary": "The amount of time an algorithm takes to run as a function of input size.",
+    "definition": "Time complexity measures how the running time of an algorithm increases as the input size grows. It is usually expressed using Big-O notation and describes the number of operations performed relative to the input size n.",
+    "example": "Binary search has O(log n) time complexity because it halves the search space each step.",
+    "difficulty": "beginner",
+    "related_terms": ["big-o-notation", "space-complexity", "binary-search"],
+    "tags": ["fundamentals", "algorithms", "complexity"]
+  },
+  {
+    "id": "space-complexity",
+    "term": "Space Complexity",
+    "aliases": ["memory complexity"],
+    "short_summary": "The amount of memory an algorithm uses as a function of input size.",
+    "definition": "Space complexity measures the total memory an algorithm needs to run, including the input storage, auxiliary space, and stack space for recursion. Like time complexity, it is often expressed with Big-O notation.",
+    "example": "Merge sort uses O(n) extra space for the temporary arrays during merging, while quick sort can run in O(log n) auxiliary space on average.",
+    "difficulty": "intermediate",
+    "related_terms": ["big-o-notation", "time-complexity", "recursion"],
+    "tags": ["fundamentals", "algorithms", "complexity"]
+  },
+  {
+    "id": "recursion",
+    "term": "Recursion",
+    "aliases": ["recursive function", "recursive call"],
+    "short_summary": "A technique where a function solves a problem by calling itself on a smaller version of that problem.",
+    "definition": "Recursion is a problem-solving technique in which a function calls itself to solve smaller instances of the same problem. Every correct recursive function needs two parts: a base case that stops the recursion, and a recursive case that reduces the problem toward that base case. Each call gets its own frame on the call stack, so recursion depth costs memory.",
+    "example": "Computing 5! as 5 * 4!, then 4! as 4 * 3!, continuing until 1! = 1 (the base case) which unwinds back up.",
+    "difficulty": "beginner",
+    "related_terms": ["call-stack", "base-case", "dynamic-programming", "memoization", "tree-traversal", "divide-and-conquer"],
+    "tags": ["algorithms", "fundamentals", "programming-concepts"],
+    "diagram_mermaid": "graph TD\n    A[\"factorial(4)\"] --> B[\"factorial(3)\"]\n    B --> C[\"factorial(2)\"]\n    C --> D[\"factorial(1)\"]\n    D --> E[\"return 1 (base case)\"]\n    E -.->|unwind| D2[\"1 * 1 = 1\"]\n    D2 -.->|unwind| C2[\"2 * 1 = 2\"]\n    C2 -.->|unwind| B2[\"3 * 2 = 6\"]\n    B2 -.->|unwind| A2[\"4 * 6 = 24\"]\n    style E fill:#bbf7d0",
+    "code_example": {
+      "language": "python",
+      "code": "def factorial(n):\n    # Base case: stops the recursion\n    if n <= 1:\n        return 1\n    # Recursive case: shrinks the problem\n    return n * factorial(n - 1)\n\n\nfor i in range(1, 7):\n    print(f'{i}! = {factorial(i)}')\n"
+    }
+  },
+  {
+    "id": "base-case",
+    "term": "Base Case",
+    "aliases": ["base condition"],
+    "short_summary": "The condition in a recursive function that stops further recursive calls.",
+    "definition": "The base case is the simplest instance of a problem that can be solved directly without recursion. It prevents infinite recursion and allows the call stack to unwind. Every recursive function must have at least one base case.",
+    "example": "In factorial(n), the base case is n <= 1, which returns 1 immediately.",
+    "difficulty": "beginner",
+    "related_terms": ["recursion", "call-stack"],
+    "tags": ["algorithms", "fundamentals"]
+  },
+  {
+    "id": "call-stack",
+    "term": "Call Stack",
+    "aliases": ["execution stack"],
+    "short_summary": "A stack data structure that stores information about active function calls.",
+    "definition": "The call stack is a region of memory that tracks function calls in a program. Each time a function is called, a stack frame is pushed with its parameters, local variables, and return address. When the function returns, its frame is popped. Deep recursion can overflow the call stack.",
+    "example": "When factorial(3) calls factorial(2), which calls factorial(1), three stack frames exist until the base case returns.",
+    "difficulty": "intermediate",
+    "related_terms": ["recursion", "stack", "stack-memory", "base-case"],
+    "tags": ["fundamentals", "programming-concepts", "memory"]
+  },
+  {
+    "id": "iteration",
+    "term": "Iteration",
+    "aliases": ["iterative"],
+    "short_summary": "Repeating a block of code using loops instead of recursion.",
+    "definition": "Iteration is the repetition of a process, typically implemented with loops such as for, while, or do-while. Iterative solutions usually use constant or fixed extra memory, making them more space-efficient than naive recursive solutions.",
+    "example": "Computing factorial with a for loop that multiplies numbers from 1 to n is an iterative solution.",
+    "difficulty": "beginner",
+    "related_terms": ["recursion", "loop"],
+    "tags": ["fundamentals", "programming-concepts"]
+  },
+  {
+    "id": "loop",
+    "term": "Loop",
+    "aliases": ["for loop", "while loop"],
+    "short_summary": "A control structure that repeats a block of code while a condition is true.",
+    "definition": "A loop is a programming construct that executes a block of code repeatedly as long as a specified condition remains true. Common types are for loops, while loops, and do-while loops. Loops are the main tool for iteration.",
+    "example": "for i in range(5): print(i) prints numbers 0 through 4.",
+    "difficulty": "beginner",
+    "related_terms": ["iteration", "conditional"],
+    "tags": ["fundamentals", "programming-concepts"]
+  },
+  {
+    "id": "conditional",
+    "term": "Conditional Statement",
+    "aliases": ["if statement", "condition"],
+    "short_summary": "A control structure that executes different code based on whether a condition is true or false.",
+    "definition": "A conditional statement lets a program make decisions. The most common form is if-else, which runs one block if a boolean expression is true and another block otherwise. elif or else-if chains handle multiple cases.",
+    "example": "if score >= 60: print('pass') else: print('fail') decides the result based on score.",
+    "difficulty": "beginner",
+    "related_terms": ["loop", "boolean"],
+    "tags": ["fundamentals", "programming-concepts"]
+  },
+  {
+    "id": "function",
+    "term": "Function",
+    "aliases": ["method", "procedure", "subroutine"],
+    "short_summary": "A reusable block of code that performs a specific task when called.",
+    "definition": "A function is a named sequence of statements that takes inputs, performs computation, and optionally returns a result. Functions reduce duplication, improve readability, and make programs easier to test and maintain.",
+    "example": "A function add(a, b) that returns a + b can be reused anywhere addition is needed.",
+    "difficulty": "beginner",
+    "related_terms": ["variable", "data-type"],
+    "tags": ["fundamentals", "programming-concepts"]
+  },
+  {
+    "id": "variable",
+    "term": "Variable",
+    "aliases": [],
+    "short_summary": "A named storage location that holds a value which can change during program execution.",
+    "definition": "A variable is a symbolic name associated with a value and whose value can be modified. Variables have a type, a name, and a scope that determines where in the code they are accessible.",
+    "example": "x = 10 creates a variable x that stores the integer 10.",
+    "difficulty": "beginner",
+    "related_terms": ["function", "data-type"],
+    "tags": ["fundamentals", "programming-concepts"]
+  },
+  {
+    "id": "data-type",
+    "term": "Data Type",
+    "aliases": ["type"],
+    "short_summary": "A classification that tells the compiler or interpreter how to use a value.",
+    "definition": "A data type defines the kind of value a variable can hold and the operations that can be performed on it. Common primitive types include integers, floats, booleans, characters, and strings. Composite types include arrays, structs, and objects.",
+    "example": "The expression 5 + 3 is valid for integers; 'hello' + 5 is usually invalid because the types differ.",
+    "difficulty": "beginner",
+    "related_terms": ["variable", "array", "string"],
+    "tags": ["fundamentals", "programming-concepts"]
+  },
+  {
+    "id": "array",
+    "term": "Array",
+    "aliases": ["list"],
+    "short_summary": "A collection of elements stored in contiguous memory locations, accessible by index.",
+    "definition": "An array is a linear data structure that stores elements of the same type in contiguous memory. Elements are accessed by a zero-based index. Arrays offer O(1) random access but fixed size in many languages and O(n) insertion/deletion in the middle.",
+    "example": "numbers = [10, 20, 30]; numbers[1] gives 20.",
+    "difficulty": "beginner",
+    "related_terms": ["linked-list", "dynamic-array", "hash-table"],
+    "tags": ["data-structures", "fundamentals"],
+    "diagram_mermaid": "graph LR\n    A[\"Index 0\"] --> B[\"10\"]\n    C[\"Index 1\"] --> D[\"20\"]\n    E[\"Index 2\"] --> F[\"30\"]\n    G[\"Index 3\"] --> H[\"40\"]",
+    "code_example": {
+      "language": "python",
+      "code": "numbers = [10, 20, 30, 40]\n\n# O(1) access by index\nprint(numbers[1])  # 20\n\n# O(n) search\nprint(30 in numbers)  # True\n\n# O(n) insert in middle\nnumbers.insert(2, 25)\nprint(numbers)  # [10, 20, 25, 30, 40]\n"
+    }
+  },
+  {
+    "id": "linked-list",
+    "term": "Linked List",
+    "aliases": ["singly linked list", "doubly linked list"],
+    "short_summary": "A linear data structure where each element points to the next element.",
+    "definition": "A linked list is a linear collection of nodes where each node contains data and a reference (pointer) to the next node. Unlike arrays, linked lists do not require contiguous memory and can grow or shrink easily. Insertion and deletion are O(1) if you have the node reference, but access is O(n).",
+    "example": "A train with carriages connected by couplings is like a linked list: each carriage holds passengers and is linked to the next one.",
+    "difficulty": "beginner",
+    "related_terms": ["array", "node", "pointer", "stack", "queue"],
+    "tags": ["data-structures", "fundamentals"],
+    "diagram_mermaid": "graph LR\n    A[\"Node A: 10\"] --> B[\"Node B: 20\"]\n    B --> C[\"Node C: 30\"]\n    C --> D[\"null\"]",
+    "code_example": {
+      "language": "python",
+      "code": "class Node:\n    def __init__(self, value):\n        self.value = value\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def append(self, value):\n        new_node = Node(value)\n        if not self.head:\n            self.head = new_node\n            return\n        current = self.head\n        while current.next:\n            current = current.next\n        current.next = new_node\n\nll = LinkedList()\nll.append(10)\nll.append(20)\nll.append(30)\n\ncurrent = ll.head\nwhile current:\n    print(current.value)\n    current = current.next\n"
+    }
+  },
+  {
+    "id": "node",
+    "term": "Node",
+    "aliases": ["vertex"],
+    "short_summary": "A single unit in a data structure such as a linked list, tree, or graph.",
+    "definition": "A node is a fundamental unit that contains data and one or more links (references or edges) to other nodes. Nodes are the building blocks of linked lists, trees, graphs, and many other structures.",
+    "example": "In a binary tree, each node stores a value and has left and right child pointers.",
+    "difficulty": "beginner",
+    "related_terms": ["linked-list", "tree", "graph", "edge"],
+    "tags": ["data-structures", "fundamentals"]
+  },
+  {
+    "id": "pointer",
+    "term": "Pointer",
+    "aliases": ["reference"],
+    "short_summary": "A variable that stores the memory address of another value.",
+    "definition": "A pointer is a variable whose value is the memory address of another variable. Pointers enable dynamic memory allocation, efficient data structures like linked lists and trees, and direct hardware interaction. In many high-level languages, references provide similar behavior with safer semantics.",
+    "example": "In C, int *p = &x; makes p store the address of x.",
+    "difficulty": "intermediate",
+    "related_terms": ["linked-list", "node", "heap-memory", "reference"],
+    "tags": ["fundamentals", "programming-concepts", "memory"]
+  },
+  {
+    "id": "reference",
+    "term": "Reference",
+    "aliases": [],
+    "short_summary": "An alias or handle that lets you access a value without copying it.",
+    "definition": "A reference is a way to refer to an existing value or object rather than creating a copy. References are used in many languages to pass objects efficiently, build linked data structures, and share mutable state.",
+    "example": "In Python, variables are references to objects, so a = [1, 2]; b = a; makes both names point to the same list.",
+    "difficulty": "intermediate",
+    "related_terms": ["pointer", "object"],
+    "tags": ["fundamentals", "programming-concepts", "memory"]
+  },
+  {
+    "id": "stack",
+    "term": "Stack",
+    "aliases": ["lifo"],
+    "short_summary": "A linear data structure where elements are added and removed from the same end.",
+    "definition": "A stack is a Last-In-First-Out (LIFO) data structure. The last element added is the first one removed. It supports two main operations: push (add to top) and pop (remove from top). Stacks are used for function calls, expression evaluation, and undo mechanisms.",
+    "example": "A stack of plates: you add and remove plates only from the top.",
+    "difficulty": "beginner",
+    "related_terms": ["queue", "call-stack", "array", "linked-list"],
+    "tags": ["data-structures", "fundamentals"],
+    "diagram_mermaid": "graph TD\n    A[\"Bottom\"] --> B[\"Plate 1\"]\n    B --> C[\"Plate 2\"]\n    C --> D[\"Plate 3\"]\n    D --> E[\"Top: push/pop here\"]\n    style E fill:#bfdbfe",
+    "code_example": {
+      "language": "python",
+      "code": "stack = []\n\nstack.append(10)  # push\nstack.append(20)\nstack.append(30)\n\nprint(stack.pop())  # 30 (LIFO)\nprint(stack.pop())  # 20\n"
+    }
+  },
+  {
+    "id": "queue",
+    "term": "Queue",
+    "aliases": ["fifo"],
+    "short_summary": "A linear data structure where elements are added at the back and removed from the front.",
+    "definition": "A queue is a First-In-First-Out (FIFO) data structure. Elements are enqueued at the rear and dequeued from the front. Queues model real-world lines and are used in scheduling, breadth-first search, and buffering.",
+    "example": "A line at a ticket counter: the first person in line is served first.",
+    "difficulty": "beginner",
+    "related_terms": ["stack", "breadth-first-search", "priority-queue"],
+    "tags": ["data-structures", "fundamentals"],
+    "code_example": {
+      "language": "python",
+      "code": "from collections import deque\n\nqueue = deque()\nqueue.append(10)  # enqueue\nqueue.append(20)\nqueue.append(30)\n\nprint(queue.popleft())  # 10 (FIFO)\nprint(queue.popleft())  # 20\n"
+    }
+  },
+  {
+    "id": "priority-queue",
+    "term": "Priority Queue",
+    "aliases": ["heap"],
+    "short_summary": "A queue where each element has a priority and the highest priority element is served first.",
+    "definition": "A priority queue is an abstract data type similar to a regular queue, but each element has an associated priority. Elements with higher priority are dequeued before lower-priority ones. It is commonly implemented with a heap for efficient insertion and extraction.",
+    "example": "An emergency room treats patients based on severity rather than arrival order.",
+    "difficulty": "intermediate",
+    "related_terms": ["queue", "heap", "greedy-algorithm"],
+    "tags": ["data-structures", "algorithms"]
+  },
+  {
+    "id": "hash-table",
+    "term": "Hash Table",
+    "aliases": ["hash map", "dictionary", "map"],
+    "short_summary": "A data structure that maps keys to values using a hash function for fast lookups.",
+    "definition": "A hash table stores key-value pairs and uses a hash function to compute an index into an array of buckets. With a good hash function, average-case lookups, insertions, and deletions are O(1). Collisions occur when two keys hash to the same bucket and are handled with chaining or open addressing.",
+    "example": "Python dictionaries are hash tables: ages = {'Alice': 30, 'Bob': 25}; ages['Alice'] is O(1) on average.",
+    "difficulty": "intermediate",
+    "related_terms": ["hash-function", "array", "collision"],
+    "tags": ["data-structures", "fundamentals"],
+    "diagram_mermaid": "graph TD\n    A[\"Key: 'Alice'\"] -->|hash| B[\"Index 2\"]\n    C[\"Key: 'Bob'\"] -->|hash| D[\"Index 5\"]\n    B --> E[\"Value: 30\"]\n    D --> F[\"Value: 25\"]",
+    "code_example": {
+      "language": "python",
+      "code": "ages = {'Alice': 30, 'Bob': 25}\n\n# O(1) average lookup\nprint(ages['Alice'])\n\nages['Charlie'] = 35\nprint('Bob' in ages)  # True\n"
+    }
+  },
+  {
+    "id": "hash-function",
+    "term": "Hash Function",
+    "aliases": ["hash"],
+    "short_summary": "A function that converts input data into a fixed-size value, typically used for indexing.",
+    "definition": "A hash function takes an input of arbitrary size and returns a fixed-size value called a hash code or digest. A good hash function distributes values uniformly and minimizes collisions. Hash functions are used in hash tables, cryptography, and data integrity checks.",
+    "example": "A simple string hash might sum character codes and take the result modulo the table size.",
+    "difficulty": "intermediate",
+    "related_terms": ["hash-table", "collision"],
+    "tags": ["data-structures", "algorithms"]
+  },
+  {
+    "id": "collision",
+    "term": "Collision",
+    "aliases": [],
+    "short_summary": "When two different keys produce the same hash value in a hash table.",
+    "definition": "A collision occurs in a hash table when two distinct keys hash to the same index. Common resolution strategies include chaining (storing a list of items at the index) and open addressing (probing for the next empty slot).",
+    "example": "If 'apple' and 'pear' both hash to index 3, they collide and must share that bucket.",
+    "difficulty": "intermediate",
+    "related_terms": ["hash-table", "hash-function"],
+    "tags": ["data-structures"]
+  },
+  {
+    "id": "tree",
+    "term": "Tree",
+    "aliases": ["tree data structure"],
+    "short_summary": "A hierarchical data structure made of nodes connected by edges, with no cycles.",
+    "definition": "A tree is a hierarchical data structure consisting of nodes connected by edges. It has a single root node at the top, and each node can have child nodes. Trees have no cycles, and there is exactly one path between any two nodes.",
+    "example": "A file system is a tree: folders contain subfolders and files in a hierarchy.",
+    "difficulty": "beginner",
+    "related_terms": ["binary-tree", "binary-search-tree", "graph", "node", "root"],
+    "tags": ["data-structures", "fundamentals"]
+  },
+  {
+    "id": "binary-tree",
+    "term": "Binary Tree",
+    "aliases": [],
+    "short_summary": "A tree where each node has at most two children, called left and right.",
+    "definition": "A binary tree is a tree data structure in which each node has at most two children, referred to as the left child and right child. Binary trees are used as the basis for binary search trees, heaps, and expression trees.",
+    "example": "A decision tree where each question has exactly two answers (yes/no) is a binary tree.",
+    "difficulty": "beginner",
+    "related_terms": ["tree", "binary-search-tree", "node"],
+    "tags": ["data-structures", "fundamentals"],
+    "diagram_mermaid": "graph TD\n    A[\"10\"] --> B[\"5\"]\n    A --> C[\"15\"]\n    B --> D[\"3\"]\n    B --> E[\"7\"]\n    C --> F[\"12\"]\n    C --> G[\"20\"]",
+    "code_example": {
+      "language": "python",
+      "code": "class TreeNode:\n    def __init__(self, value):\n        self.value = value\n        self.left = None\n        self.right = None\n\nroot = TreeNode(10)\nroot.left = TreeNode(5)\nroot.right = TreeNode(15)\n\nprint(root.left.value)   # 5\nprint(root.right.value)  # 15\n"
+    }
+  },
+  {
+    "id": "binary-search-tree",
+    "term": "Binary Search Tree",
+    "aliases": ["bst"],
+    "short_summary": "A binary tree where left children are smaller and right children are larger than their parent.",
+    "definition": "A binary search tree (BST) is a binary tree with the ordering property: for every node, all values in its left subtree are smaller, and all values in its right subtree are larger. This enables O(h) search, insertion, and deletion, where h is the tree height. A balanced BST gives O(log n) operations.",
+    "example": "Looking up a word in a BST dictionary: at each node, go left if the word is earlier in the alphabet, right if later.",
+    "difficulty": "intermediate",
+    "related_terms": ["binary-tree", "tree", "balance", "inorder-traversal"],
+    "tags": ["data-structures", "algorithms"],
+    "diagram_mermaid": "graph TD\n    A[\"8\"] --> B[\"3\"]\n    A --> C[\"10\"]\n    B --> D[\"1\"]\n    B --> E[\"6\"]\n    E --> F[\"4\"]\n    E --> G[\"7\"]\n    C --> H[\"9\"]\n    C --> I[\"14\"]",
+    "code_example": {
+      "language": "python",
+      "code": "class TreeNode:\n    def __init__(self, value):\n        self.value = value\n        self.left = None\n        self.right = None\n\ndef insert(root, value):\n    if root is None:\n        return TreeNode(value)\n    if value < root.value:\n        root.left = insert(root.left, value)\n    else:\n        root.right = insert(root.right, value)\n    return root\n\ndef search(root, value):\n    if root is None or root.value == value:\n        return root\n    if value < root.value:\n        return search(root.left, value)\n    return search(root.right, value)\n\nroot = None\nfor v in [8, 3, 10, 1, 6, 14, 4, 7, 13]:\n    root = insert(root, v)\n\nprint('Found 6:', search(root, 6) is not None)\nprint('Found 100:', search(root, 100) is not None)\n"
+    }
+  },
+  {
+    "id": "balance",
+    "term": "Tree Balance",
+    "aliases": ["balanced tree"],
+    "short_summary": "A property of trees where left and right subtrees have similar heights, ensuring efficient operations.",
+    "definition": "A balanced tree keeps its height close to the minimum possible, usually O(log n) for n nodes. This guarantees that search, insertion, and deletion remain efficient. Examples include AVL trees and red-black trees, which rebalance automatically after modifications.",
+    "example": "A perfectly balanced BST with 7 nodes has height 2, while an unbalanced one can degenerate into a linked list with height 6.",
+    "difficulty": "advanced",
+    "related_terms": ["binary-search-tree"],
+    "tags": ["data-structures", "algorithms"]
+  },
+  {
+    "id": "heap",
+    "term": "Heap",
+    "aliases": ["binary heap"],
+    "short_summary": "A complete binary tree where each parent satisfies an order property with its children.",
+    "definition": "A heap is a specialized tree-based data structure that satisfies the heap property. In a max-heap, every parent is greater than or equal to its children; in a min-heap, every parent is less than or equal to its children. Heaps are used to implement priority queues and heap sort.",
+    "example": "A min-heap always gives quick access to the smallest element, useful for scheduling tasks by priority.",
+    "difficulty": "intermediate",
+    "related_terms": ["priority-queue", "tree", "heap-sort"],
+    "tags": ["data-structures", "algorithms"],
+    "code_example": {
+      "language": "python",
+      "code": "import heapq\n\n# heapq implements a min-heap\nheap = [5, 3, 8, 1, 9]\nheapq.heapify(heap)\n\nprint(heapq.heappop(heap))  # 1\nprint(heapq.heappop(heap))  # 3\n\nheapq.heappush(heap, 2)\nprint(heapq.heappop(heap))  # 2\n"
+    }
+  },
+  {
+    "id": "graph",
+    "term": "Graph",
+    "aliases": ["network"],
+    "short_summary": "A collection of vertices connected by edges, used to model relationships.",
+    "definition": "A graph is a non-linear data structure consisting of vertices (nodes) and edges that connect pairs of vertices. Graphs can be directed or undirected, weighted or unweighted. They model networks, maps, dependencies, and social relationships.",
+    "example": "A road map is a graph: cities are vertices and roads are edges with distances as weights.",
+    "difficulty": "intermediate",
+    "related_terms": ["tree", "node", "edge", "depth-first-search", "breadth-first-search", "dijkstra"],
+    "tags": ["data-structures", "algorithms"],
+    "diagram_mermaid": "graph LR\n    A[\"A\"] -->|3| B[\"B\"]\n    A -->|1| C[\"C\"]\n    B -->|2| C\n    C -->|4| D[\"D\"]",
+    "code_example": {
+      "language": "python",
+      "code": "from collections import defaultdict\n\ngraph = defaultdict(list)\ngraph['A'] = ['B', 'C']\ngraph['B'] = ['C', 'D']\ngraph['C'] = ['D']\n\n# Adjacency list representation\nfor node, neighbors in graph.items():\n    print(f'{node} -> {neighbors}')\n"
+    }
+  },
+  {
+    "id": "edge",
+    "term": "Edge",
+    "aliases": [],
+    "short_summary": "A connection between two nodes in a graph or tree.",
+    "definition": "An edge is a link between two vertices in a graph. In directed graphs, edges have a direction from one vertex to another. In weighted graphs, edges have an associated cost or distance.",
+    "example": "In a social network graph, an edge represents a friendship between two users.",
+    "difficulty": "beginner",
+    "related_terms": ["graph", "node"],
+    "tags": ["data-structures", "fundamentals"]
+  },
+  {
+    "id": "trie",
+    "term": "Trie",
+    "aliases": ["prefix tree"],
+    "short_summary": "A tree-based structure for efficient storage and retrieval of strings by prefix.",
+    "definition": "A trie is a specialized tree used to store a dynamic set of strings. Each node represents a character, and paths from the root to a marked node spell complete words. Tries enable fast prefix-based search and are used in autocomplete and spell checkers.",
+    "example": "Storing 'car', 'cat', and 'dog' in a trie shares the 'c' root path and splits at 'a' for 'r' vs 't'.",
+    "difficulty": "advanced",
+    "related_terms": ["tree", "string", "graph"],
+    "tags": ["data-structures", "algorithms"]
+  },
+  {
+    "id": "sorting",
+    "term": "Sorting",
+    "aliases": ["sort algorithm"],
+    "short_summary": "The process of arranging elements in a specific order, usually ascending or descending.",
+    "definition": "Sorting is a fundamental algorithmic operation that rearranges a collection of items into a defined order, such as numerical or lexicographic. Efficient sorting improves search performance and is a prerequisite for many algorithms.",
+    "example": "Arranging exam scores from lowest to highest is sorting.",
+    "difficulty": "beginner",
+    "related_terms": ["bubble-sort", "merge-sort", "quick-sort", "binary-search"],
+    "tags": ["algorithms", "fundamentals"]
+  },
+  {
+    "id": "bubble-sort",
+    "term": "Bubble Sort",
+    "aliases": [],
+    "short_summary": "A simple sorting algorithm that repeatedly swaps adjacent elements if they are in the wrong order.",
+    "definition": "Bubble sort repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The largest unsorted element 'bubbles up' to its correct position in each pass. It has O(n^2) time complexity, making it inefficient for large datasets.",
+    "example": "Sorting [3, 1, 2]: first pass swaps 3 and 1, then 3 and 2, leaving 3 at the end.",
+    "difficulty": "beginner",
+    "related_terms": ["sorting", "selection-sort", "insertion-sort"],
+    "tags": ["algorithms"],
+    "code_example": {
+      "language": "python",
+      "code": "def bubble_sort(arr):\n    n = len(arr)\n    for i in range(n):\n        for j in range(0, n - i - 1):\n            if arr[j] > arr[j + 1]:\n                arr[j], arr[j + 1] = arr[j + 1], arr[j]\n    return arr\n\nprint(bubble_sort([64, 34, 25, 12, 22, 11, 90]))\n"
+    }
+  },
+  {
+    "id": "selection-sort",
+    "term": "Selection Sort",
+    "aliases": [],
+    "short_summary": "A sorting algorithm that repeatedly selects the smallest element and places it at the beginning.",
+    "definition": "Selection sort divides the list into a sorted and an unsorted region. It repeatedly finds the minimum element in the unsorted region and swaps it with the first unsorted element. Like bubble sort, it has O(n^2) time complexity.",
+    "example": "On each pass, selection sort picks the smallest remaining card and adds it to the sorted hand.",
+    "difficulty": "beginner",
+    "related_terms": ["sorting", "bubble-sort", "insertion-sort"],
+    "tags": ["algorithms"]
+  },
+  {
+    "id": "insertion-sort",
+    "term": "Insertion Sort",
+    "aliases": [],
+    "short_summary": "A sorting algorithm that builds the sorted list one element at a time by inserting each element into its correct position.",
+    "definition": "Insertion sort builds the final sorted array one item at a time. It takes each element from the input and inserts it into its proper position in the already-sorted portion. It is efficient for small or nearly sorted arrays with O(n^2) worst-case and O(n) best-case time.",
+    "example": "Sorting a hand of cards by repeatedly picking a card and inserting it into the correct spot.",
+    "difficulty": "beginner",
+    "related_terms": ["sorting", "bubble-sort", "selection-sort"],
+    "tags": ["algorithms"]
+  },
+  {
+    "id": "merge-sort",
+    "term": "Merge Sort",
+    "aliases": [],
+    "short_summary": "A divide-and-conquer sorting algorithm with O(n log n) time complexity.",
+    "definition": "Merge sort divides the array into halves recursively until each subarray has one element, then merges the subarrays back together in sorted order. It guarantees O(n log n) time but requires O(n) extra space.",
+    "example": "Splitting a deck of cards into piles of one, then merging pairs of piles in sorted order until the full deck is sorted.",
+    "difficulty": "intermediate",
+    "related_terms": ["sorting", "divide-and-conquer", "quick-sort"],
+    "tags": ["algorithms"],
+    "code_example": {
+      "language": "python",
+      "code": "def merge_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    return merge(left, right)\n\ndef merge(left, right):\n    result = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            result.append(left[i])\n            i += 1\n        else:\n            result.append(right[j])\n            j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result\n\nprint(merge_sort([64, 34, 25, 12, 22, 11, 90]))\n"
+    }
+  },
+  {
+    "id": "quick-sort",
+    "term": "Quick Sort",
+    "aliases": ["quicksort"],
+    "short_summary": "A divide-and-conquer sorting algorithm that uses a pivot to partition the array.",
+    "definition": "Quick sort picks a pivot element and partitions the array into elements less than the pivot and elements greater than the pivot. It then recursively sorts the partitions. Average time is O(n log n), but worst case is O(n^2) with bad pivots.",
+    "example": "Choosing a pivot exam score and grouping lower scores to the left and higher scores to the right, then repeating for each group.",
+    "difficulty": "intermediate",
+    "related_terms": ["sorting", "divide-and-conquer", "merge-sort"],
+    "tags": ["algorithms"],
+    "code_example": {
+      "language": "python",
+      "code": "def quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[len(arr) // 2]\n    left = [x for x in arr if x < pivot]\n    middle = [x for x in arr if x == pivot]\n    right = [x for x in arr if x > pivot]\n    return quick_sort(left) + middle + quick_sort(right)\n\nprint(quick_sort([64, 34, 25, 12, 22, 11, 90]))\n"
+    }
+  },
+  {
+    "id": "heap-sort",
+    "term": "Heap Sort",
+    "aliases": [],
+    "short_summary": "A comparison-based sorting algorithm that uses a heap data structure.",
+    "definition": "Heap sort builds a max-heap from the input, repeatedly extracts the maximum element, and places it at the end of the sorted region. It has O(n log n) time complexity and sorts in-place with O(1) extra space.",
+    "example": "Repeatedly pulling the largest remaining item from a priority queue produces a sorted list.",
+    "difficulty": "advanced",
+    "related_terms": ["sorting", "heap", "priority-queue"],
+    "tags": ["algorithms"]
+  },
+  {
+    "id": "searching",
+    "term": "Searching",
+    "aliases": ["search algorithm"],
+    "short_summary": "The process of finding a target element within a collection of data.",
+    "definition": "Searching algorithms locate a target value within a data structure. Common approaches include linear search, which checks each element in order, and binary search, which halves the search space on sorted data.",
+    "example": "Finding a name in a phone book is a search problem.",
+    "difficulty": "beginner",
+    "related_terms": ["linear-search", "binary-search", "hash-table"],
+    "tags": ["algorithms", "fundamentals"]
+  },
+  {
+    "id": "linear-search",
+    "term": "Linear Search",
+    "aliases": ["sequential search"],
+    "short_summary": "A search algorithm that checks each element in order until the target is found.",
+    "definition": "Linear search iterates through a collection one element at a time, comparing each element to the target. It works on unsorted data but has O(n) time complexity in the worst case.",
+    "example": "Looking through a stack of papers one by one until you find the one you need.",
+    "difficulty": "beginner",
+    "related_terms": ["searching", "binary-search"],
+    "tags": ["algorithms"],
+    "code_example": {
+      "language": "python",
+      "code": "def linear_search(arr, target):\n    for i, value in enumerate(arr):\n        if value == target:\n            return i\n    return -1\n\nprint(linear_search([10, 20, 30, 40], 30))  # 2\nprint(linear_search([10, 20, 30, 40], 50))  # -1\n"
+    }
+  },
+  {
+    "id": "binary-search",
+    "term": "Binary Search",
+    "aliases": [],
+    "short_summary": "A search algorithm that repeatedly halves a sorted array to find a target.",
+    "definition": "Binary search works on sorted arrays by comparing the target to the middle element. If the target is smaller, it searches the left half; if larger, the right half. It repeats until the target is found or the range is empty. Time complexity is O(log n).",
+    "example": "Looking up a word in a dictionary by opening to the middle, then choosing the correct half, repeating until found.",
+    "difficulty": "beginner",
+    "related_terms": ["searching", "linear-search", "divide-and-conquer"],
+    "tags": ["algorithms", "fundamentals"],
+    "diagram_mermaid": "graph TD\n    A[\"Array [1,3,5,7,9,11,13]\"] --> B[\"mid=7\"]\n    B -->|target=11| C[\"search right half [9,11,13]\"]\n    C --> D[\"mid=11\"]\n    D -->|found| E[\"return index\"]",
+    "code_example": {
+      "language": "python",
+      "code": "def binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1\n\narr = [1, 3, 5, 7, 9, 11, 13]\nprint(binary_search(arr, 11))  # 5\nprint(binary_search(arr, 4))   # -1\n"
+    }
+  },
+  {
+    "id": "divide-and-conquer",
+    "term": "Divide and Conquer",
+    "aliases": [],
+    "short_summary": "An algorithmic paradigm that breaks a problem into smaller subproblems, solves them, and combines the results.",
+    "definition": "Divide and conquer is a problem-solving strategy that recursively breaks a problem into smaller subproblems until they are simple enough to solve directly. The solutions to subproblems are then combined to solve the original problem. Examples include merge sort, quick sort, and binary search.",
+    "example": "To clean a messy room, divide it into corners, clean each corner, and the whole room is clean.",
+    "difficulty": "intermediate",
+    "related_terms": ["recursion", "merge-sort", "quick-sort", "binary-search"],
+    "tags": ["algorithms", "paradigms"]
+  },
+  {
+    "id": "dynamic-programming",
+    "term": "Dynamic Programming",
+    "aliases": ["dp"],
+    "short_summary": "A method for solving complex problems by breaking them into overlapping subproblems and storing their solutions.",
+    "definition": "Dynamic programming (DP) solves problems by breaking them into smaller overlapping subproblems, solving each subproblem once, and storing the results to avoid redundant computation. It is especially useful for optimization and counting problems.",
+    "example": "Computing Fibonacci numbers with memoization avoids recalculating the same values repeatedly.",
+    "difficulty": "intermediate",
+    "related_terms": ["recursion", "memoization", "greedy-algorithm"],
+    "tags": ["algorithms", "paradigms"],
+    "code_example": {
+      "language": "python",
+      "code": "def fib(n, memo=None):\n    if memo is None:\n        memo = {}\n    if n in memo:\n        return memo[n]\n    if n < 2:\n        return n\n    memo[n] = fib(n - 1, memo) + fib(n - 2, memo)\n    return memo[n]\n\nprint(fib(30))  # 832040\nprint(fib(100))  # 354224848179261915075\n"
+    }
+  },
+  {
+    "id": "memoization",
+    "term": "Memoization",
+    "aliases": [],
+    "short_summary": "Storing the results of expensive function calls to avoid redundant computation.",
+    "definition": "Memoization is an optimization technique where the results of function calls are cached and reused when the same inputs occur again. It is commonly used in dynamic programming and recursive algorithms to transform exponential time into polynomial time.",
+    "example": "In the Fibonacci sequence, fib(5) calls fib(3) twice; memoization stores fib(3) after the first call.",
+    "difficulty": "intermediate",
+    "related_terms": ["dynamic-programming", "recursion"],
+    "tags": ["algorithms", "optimization"]
+  },
+  {
+    "id": "greedy-algorithm",
+    "term": "Greedy Algorithm",
+    "aliases": ["greedy approach"],
+    "short_summary": "An algorithm that makes the locally optimal choice at each step hoping to find a global optimum.",
+    "definition": "A greedy algorithm builds a solution piece by piece, always choosing the next piece that offers the most immediate benefit. Greedy algorithms are simple and fast but do not always produce the globally optimal solution.",
+    "example": "Making change with the fewest coins by always picking the largest coin that does not exceed the remaining amount.",
+    "difficulty": "intermediate",
+    "related_terms": ["dynamic-programming", "algorithm"],
+    "tags": ["algorithms", "paradigms"]
+  },
+  {
+    "id": "backtracking",
+    "term": "Backtracking",
+    "aliases": [],
+    "short_summary": "A systematic way of trying out sequences of decisions and undoing choices that lead to dead ends.",
+    "definition": "Backtracking is an algorithmic technique for solving problems recursively by trying to build a solution incrementally. If a partial solution violates constraints, the algorithm backtracks and tries the next alternative. It is used for puzzles, permutations, and constraint satisfaction problems.",
+    "example": "Solving a maze by trying each path and retracing steps when hitting a wall.",
+    "difficulty": "intermediate",
+    "related_terms": ["recursion", "brute-force"],
+    "tags": ["algorithms", "paradigms"]
+  },
+  {
+    "id": "brute-force",
+    "term": "Brute Force",
+    "aliases": ["brute force algorithm"],
+    "short_summary": "A straightforward approach that tries all possibilities to find a solution.",
+    "definition": "A brute-force algorithm solves a problem by enumerating all possible candidates and checking each one. It is simple to implement but often inefficient, with exponential or factorial time complexity for large inputs.",
+    "example": "Cracking a password by trying every possible combination of characters.",
+    "difficulty": "beginner",
+    "related_terms": ["algorithm", "backtracking"],
+    "tags": ["algorithms", "fundamentals"]
+  },
+  {
+    "id": "depth-first-search",
+    "term": "Depth-First Search",
+    "aliases": ["dfs"],
+    "short_summary": "A graph traversal algorithm that explores as far as possible along each branch before backtracking.",
+    "definition": "Depth-first search (DFS) explores a graph or tree by going as deep as possible along each branch before backtracking. It can be implemented recursively or with an explicit stack. DFS is useful for pathfinding, cycle detection, and topological sort.",
+    "example": "Exploring a maze by following each corridor to the end before turning back.",
+    "difficulty": "intermediate",
+    "related_terms": ["breadth-first-search", "graph", "tree", "stack", "recursion"],
+    "tags": ["algorithms", "graphs"],
+    "code_example": {
+      "language": "python",
+      "code": "def dfs(graph, start, visited=None):\n    if visited is None:\n        visited = set()\n    visited.add(start)\n    print(start)\n    for neighbor in graph.get(start, []):\n        if neighbor not in visited:\n            dfs(graph, neighbor, visited)\n    return visited\n\ngraph = {\n    'A': ['B', 'C'],\n    'B': ['D', 'E'],\n    'C': ['F'],\n    'D': [],\n    'E': ['F'],\n    'F': []\n}\n\ndfs(graph, 'A')  # A B D E F C (order may vary)\n"
+    }
+  },
+  {
+    "id": "breadth-first-search",
+    "term": "Breadth-First Search",
+    "aliases": ["bfs"],
+    "short_summary": "A graph traversal algorithm that explores all neighbors at the present depth before moving deeper.",
+    "definition": "Breadth-first search (BFS) explores a graph level by level, visiting all neighbors of the starting node first, then their neighbors, and so on. It uses a queue and finds the shortest path in unweighted graphs.",
+    "example": "Finding the shortest path in a social network: check all direct friends, then friends of friends, etc.",
+    "difficulty": "intermediate",
+    "related_terms": ["depth-first-search", "graph", "queue", "shortest-path"],
+    "tags": ["algorithms", "graphs"],
+    "code_example": {
+      "language": "python",
+      "code": "from collections import deque\n\ndef bfs(graph, start):\n    visited = {start}\n    queue = deque([start])\n    while queue:\n        node = queue.popleft()\n        print(node)\n        for neighbor in graph.get(node, []):\n            if neighbor not in visited:\n                visited.add(neighbor)\n                queue.append(neighbor)\n    return visited\n\ngraph = {\n    'A': ['B', 'C'],\n    'B': ['D', 'E'],\n    'C': ['F'],\n    'D': [],\n    'E': ['F'],\n    'F': []\n}\n\nbfs(graph, 'A')  # A B C D E F (order may vary)\n"
+    }
+  },
+  {
+    "id": "shortest-path",
+    "term": "Shortest Path",
+    "aliases": [],
+    "short_summary": "The problem of finding the minimum-cost route between two nodes in a graph.",
+    "definition": "The shortest path problem asks for the path between two nodes in a graph with the smallest total edge weight. Algorithms include BFS for unweighted graphs, Dijkstra's algorithm for non-negative weights, and Bellman-Ford for graphs with negative weights.",
+    "example": "GPS navigation finds the shortest path from your location to a destination based on road distances.",
+    "difficulty": "intermediate",
+    "related_terms": ["dijkstra", "breadth-first-search", "graph"],
+    "tags": ["algorithms", "graphs"]
+  },
+  {
+    "id": "dijkstra",
+    "term": "Dijkstra's Algorithm",
+    "aliases": ["dijkstra"],
+    "short_summary": "An algorithm that finds the shortest paths from a source node to all other nodes in a weighted graph with non-negative edges.",
+    "definition": "Dijkstra's algorithm maintains a set of visited nodes and a priority queue of candidate distances. It repeatedly extracts the node with the smallest known distance, relaxes its outgoing edges, and updates distances. It works only with non-negative edge weights.",
+    "example": "Finding the fastest driving route through a city where roads have different travel times.",
+    "difficulty": "advanced",
+    "related_terms": ["shortest-path", "graph", "priority-queue", "greedy-algorithm"],
+    "tags": ["algorithms", "graphs"]
+  },
+  {
+    "id": "topological-sort",
+    "term": "Topological Sort",
+    "aliases": ["toposort"],
+    "short_summary": "An ordering of nodes in a directed acyclic graph such that every edge goes from earlier to later.",
+    "definition": "Topological sort arranges the vertices of a directed acyclic graph (DAG) into a linear order where for every directed edge from u to v, u comes before v. It is used for task scheduling and resolving dependencies.",
+    "example": "Determining the order in which to compile source files based on their import dependencies.",
+    "difficulty": "advanced",
+    "related_terms": ["graph", "directed-acyclic-graph", "depth-first-search"],
+    "tags": ["algorithms", "graphs"]
+  },
+  {
+    "id": "directed-acyclic-graph",
+    "term": "Directed Acyclic Graph",
+    "aliases": ["dag"],
+    "short_summary": "A directed graph with no cycles, often used to model dependencies.",
+    "definition": "A directed acyclic graph (DAG) is a graph whose edges have a direction and which contains no directed cycles. DAGs are used to represent workflows, dependency graphs, and expressions.",
+    "example": "A course prerequisite graph where an edge from A to B means A must be taken before B.",
+    "difficulty": "intermediate",
+    "related_terms": ["graph", "topological-sort", "edge"],
+    "tags": ["data-structures", "graphs"]
+  },
+  {
+    "id": "tree-traversal",
+    "term": "Tree Traversal",
+    "aliases": [],
+    "short_summary": "The process of visiting each node in a tree in a specific order.",
+    "definition": "Tree traversal refers to visiting all nodes of a tree in a systematic order. Common strategies include preorder (root, left, right), inorder (left, root, right), postorder (left, right, root), and level-order (breadth-first).",
+    "example": "Printing all files in a folder hierarchy requires a tree traversal.",
+    "difficulty": "intermediate",
+    "related_terms": ["binary-tree", "inorder-traversal", "depth-first-search", "breadth-first-search"],
+    "tags": ["algorithms", "data-structures"]
+  },
+  {
+    "id": "inorder-traversal",
+    "term": "Inorder Traversal",
+    "aliases": [],
+    "short_summary": "A tree traversal that visits left subtree, root, then right subtree.",
+    "definition": "In inorder traversal, each node is visited after its left subtree and before its right subtree. For a binary search tree, inorder traversal yields the values in sorted ascending order.",
+    "example": "Inorder traversal of a BST with values [1, 2, 3] visits them in order: 1, 2, 3.",
+    "difficulty": "intermediate",
+    "related_terms": ["tree-traversal", "binary-search-tree"],
+    "tags": ["algorithms", "data-structures"]
+  },
+  {
+    "id": "preorder-traversal",
+    "term": "Preorder Traversal",
+    "aliases": [],
+    "short_summary": "A tree traversal that visits root, left subtree, then right subtree.",
+    "definition": "In preorder traversal, the current node is visited before its children. It is useful for copying a tree or serializing it, because the root is processed first.",
+    "example": "Preorder traversal of a tree with root A and children B, C visits A, B, C.",
+    "difficulty": "intermediate",
+    "related_terms": ["tree-traversal", "binary-tree"],
+    "tags": ["algorithms", "data-structures"]
+  },
+  {
+    "id": "postorder-traversal",
+    "term": "Postorder Traversal",
+    "aliases": [],
+    "short_summary": "A tree traversal that visits left subtree, right subtree, then root.",
+    "definition": "In postorder traversal, both subtrees are fully visited before the current node. It is useful for deleting a tree or evaluating expression trees, where children must be processed before their parent.",
+    "example": "Postorder traversal of a tree with root A and children B, C visits B, C, A.",
+    "difficulty": "intermediate",
+    "related_terms": ["tree-traversal", "binary-tree"],
+    "tags": ["algorithms", "data-structures"]
+  },
+  {
+    "id": "object-oriented-programming",
+    "term": "Object-Oriented Programming",
+    "aliases": ["oop"],
+    "short_summary": "A programming paradigm that organizes code into objects combining data and behavior.",
+    "definition": "Object-oriented programming (OOP) is a paradigm based on the concept of objects, which bundle data (attributes) and behavior (methods) together. Core principles include encapsulation, inheritance, polymorphism, and abstraction.",
+    "example": "A Car class can have attributes like color and speed, and methods like drive() and brake().",
+    "difficulty": "beginner",
+    "related_terms": ["class", "object", "inheritance", "polymorphism", "encapsulation", "abstraction"],
+    "tags": ["programming-concepts", "paradigms"]
+  },
+  {
+    "id": "class",
+    "term": "Class",
+    "aliases": [],
+    "short_summary": "A blueprint for creating objects that defines their data and behavior.",
+    "definition": "A class is a template or blueprint from which objects are created. It defines the attributes (data) and methods (functions) that its objects will have. Classes are fundamental to object-oriented programming.",
+    "example": "class Dog: defines that every Dog object has a name and can bark().",
+    "difficulty": "beginner",
+    "related_terms": ["object", "object-oriented-programming", "inheritance"],
+    "tags": ["programming-concepts", "paradigms"]
+  },
+  {
+    "id": "object",
+    "term": "Object",
+    "aliases": ["instance"],
+    "short_summary": "A concrete instance of a class with its own state and behavior.",
+    "definition": "An object is a runtime entity created from a class. It has its own values for the attributes defined by the class and can invoke the class's methods. Multiple objects can be created from the same class.",
+    "example": "my_dog = Dog('Rex') creates an object of the Dog class named Rex.",
+    "difficulty": "beginner",
+    "related_terms": ["class", "object-oriented-programming"],
+    "tags": ["programming-concepts", "paradigms"]
+  },
+  {
+    "id": "inheritance",
+    "term": "Inheritance",
+    "aliases": [],
+    "short_summary": "A mechanism where a new class derives properties and behavior from an existing class.",
+    "definition": "Inheritance allows one class (the child or subclass) to acquire the attributes and methods of another class (the parent or superclass). It promotes code reuse and establishes an 'is-a' relationship.",
+    "example": "A GoldenRetriever class can inherit from a Dog class and reuse bark() while adding fetch().",
+    "difficulty": "beginner",
+    "related_terms": ["class", "object-oriented-programming", "polymorphism"],
+    "tags": ["programming-concepts", "paradigms"]
+  },
+  {
+    "id": "polymorphism",
+    "term": "Polymorphism",
+    "aliases": [],
+    "short_summary": "The ability of different objects to respond to the same method call in different ways.",
+    "definition": "Polymorphism means 'many forms.' In programming, it allows objects of different classes to be treated through a common interface, and the same method call can behave differently based on the object's actual class.",
+    "example": "Both Dog and Cat classes can implement speak(), but dogs bark while cats meow.",
+    "difficulty": "intermediate",
+    "related_terms": ["object-oriented-programming", "inheritance", "interface"],
+    "tags": ["programming-concepts", "paradigms"]
+  },
+  {
+    "id": "encapsulation",
+    "term": "Encapsulation",
+    "aliases": [],
+    "short_summary": "Bundling data and methods together while restricting direct access to internal state.",
+    "definition": "Encapsulation is the practice of hiding the internal details of an object and exposing only a controlled public interface. It protects data integrity and reduces coupling between components.",
+    "example": "A bank account class exposes deposit() and withdraw() methods but keeps the balance private.",
+    "difficulty": "intermediate",
+    "related_terms": ["object-oriented-programming", "abstraction", "class"],
+    "tags": ["programming-concepts", "paradigms"]
+  },
+  {
+    "id": "abstraction",
+    "term": "Abstraction",
+    "aliases": [],
+    "short_summary": "Hiding complex implementation details and exposing only essential features.",
+    "definition": "Abstraction is the process of simplifying complex systems by modeling classes and interfaces that expose only relevant behaviors. It allows programmers to work at a higher level without worrying about internal details.",
+    "example": "Driving a car requires using the steering wheel and pedals, not understanding the engine internals.",
+    "difficulty": "intermediate",
+    "related_terms": ["object-oriented-programming", "encapsulation", "interface"],
+    "tags": ["programming-concepts", "paradigms"]
+  },
+  {
+    "id": "interface",
+    "term": "Interface",
+    "aliases": [],
+    "short_summary": "A contract that defines methods a class must implement without providing their implementation.",
+    "definition": "An interface specifies a set of methods that a class must provide. It defines what behavior is expected without dictating how it is implemented. Interfaces enable polymorphism and decouple code from specific implementations.",
+    "example": "A PaymentProcessor interface might require process_payment(), with CreditCardProcessor and PayPalProcessor providing different implementations.",
+    "difficulty": "intermediate",
+    "related_terms": ["abstraction", "polymorphism", "class"],
+    "tags": ["programming-concepts", "paradigms"]
+  },
+  {
+    "id": "memory",
+    "term": "Memory",
+    "aliases": ["computer memory", "ram"],
+    "short_summary": "The hardware and system resources used to store data and instructions while a program runs.",
+    "definition": "Memory is the electronic storage used by computers to hold data and program instructions while they are being processed. It ranges from fast, volatile RAM used by running programs to slower, persistent storage like SSDs. Programmers often work with two main memory regions: the stack for local variables and function calls, and the heap for dynamic allocation.",
+    "example": "When you open an application, its code and data are loaded from disk into memory so the CPU can access them quickly.",
+    "difficulty": "beginner",
+    "related_terms": ["stack-memory", "heap-memory", "garbage-collection"],
+    "tags": ["systems", "memory", "fundamentals"]
+  },
+  {
+    "id": "stack-memory",
+    "term": "Stack Memory",
+    "aliases": ["call stack memory"],
+    "short_summary": "A region of memory that stores local variables and function call information.",
+    "definition": "Stack memory is used for static memory allocation of local variables and function call frames. It is managed automatically: frames are pushed when a function is called and popped when it returns. Stack memory is fast but limited in size.",
+    "example": "Local variables inside a function and the return address are stored on the stack.",
+    "difficulty": "intermediate",
+    "related_terms": ["heap-memory", "call-stack", "pointer"],
+    "tags": ["memory", "programming-concepts"]
+  },
+  {
+    "id": "heap-memory",
+    "term": "Heap Memory",
+    "aliases": ["heap"],
+    "short_summary": "A region of memory used for dynamic allocation with manual or garbage-collected management.",
+    "definition": "Heap memory is used for dynamic memory allocation, where the programmer or runtime requests and releases memory as needed. It is larger and more flexible than the stack but slower to allocate and requires careful management to avoid leaks.",
+    "example": "Objects created with new in Java or malloc in C live on the heap.",
+    "difficulty": "intermediate",
+    "related_terms": ["stack-memory", "pointer", "garbage-collection"],
+    "tags": ["memory", "programming-concepts"]
+  },
+  {
+    "id": "garbage-collection",
+    "term": "Garbage Collection",
+    "aliases": ["gc"],
+    "short_summary": "Automatic memory management that reclaims memory occupied by unreachable objects.",
+    "definition": "Garbage collection is a form of automatic memory management. The runtime periodically identifies objects that are no longer reachable from any reference and frees their memory, preventing memory leaks without manual deallocation.",
+    "example": "In Python and Java, objects that no longer have any variable pointing to them are automatically cleaned up by the garbage collector.",
+    "difficulty": "intermediate",
+    "related_terms": ["heap-memory", "memory"],
+    "tags": ["memory", "programming-concepts"]
+  },
+  {
+    "id": "database",
+    "term": "Database",
+    "aliases": ["db"],
+    "short_summary": "An organized collection of data that can be easily accessed, managed, and updated.",
+    "definition": "A database is a structured collection of data stored electronically. Databases are managed by database management systems (DBMS) and support operations like querying, inserting, updating, and deleting data. Common types include relational and NoSQL databases.",
+    "example": "An online store uses a database to store products, customers, and orders.",
+    "difficulty": "beginner",
+    "related_terms": ["sql", "api", "json"],
+    "tags": ["systems", "databases"]
+  },
+  {
+    "id": "sql",
+    "term": "SQL",
+    "aliases": ["structured query language"],
+    "short_summary": "A language for managing and querying data in relational databases.",
+    "definition": "SQL is a standardized language used to interact with relational databases. It supports creating tables, inserting data, updating records, and querying data with SELECT statements. SQL databases organize data into tables with rows and columns.",
+    "example": "SELECT name, age FROM users WHERE age > 18; retrieves adult users.",
+    "difficulty": "beginner",
+    "related_terms": ["database", "relational-database"],
+    "tags": ["systems", "databases"],
+    "code_example": {
+      "language": "python",
+      "code": "# SQL example (not runnable as Python, but shows syntax)\nquery = '''\nSELECT name, age\nFROM users\nWHERE age > 18\nORDER BY age;\n'''\nprint(query)\n"
+    }
+  },
+  {
+    "id": "relational-database",
+    "term": "Relational Database",
+    "aliases": ["rdbms"],
+    "short_summary": "A database that stores data in tables with predefined relationships between them.",
+    "definition": "A relational database organizes data into one or more tables of rows and columns. Relationships between tables are defined using keys, especially primary keys and foreign keys. Relational databases use SQL and enforce ACID properties.",
+    "example": "A school database might have Students, Courses, and Enrollments tables linked by IDs.",
+    "difficulty": "intermediate",
+    "related_terms": ["sql", "database", "primary-key", "foreign-key"],
+    "tags": ["systems", "databases"]
+  },
+  {
+    "id": "primary-key",
+    "term": "Primary Key",
+    "aliases": ["pk"],
+    "short_summary": "A column or set of columns that uniquely identifies each row in a table.",
+    "definition": "A primary key is a unique identifier for each record in a database table. It cannot contain null values and ensures that every row can be uniquely addressed. Tables usually have exactly one primary key.",
+    "example": "A user_id column in a users table is typically the primary key.",
+    "difficulty": "beginner",
+    "related_terms": ["relational-database", "foreign-key", "sql"],
+    "tags": ["systems", "databases"]
+  },
+  {
+    "id": "foreign-key",
+    "term": "Foreign Key",
+    "aliases": ["fk"],
+    "short_summary": "A column that creates a link between two tables by referencing a primary key.",
+    "definition": "A foreign key is a field in one table that uniquely identifies a row in another table. It enforces referential integrity and establishes relationships between tables, such as one-to-many or many-to-many.",
+    "example": "An orders table might have a customer_id foreign key that references the users table.",
+    "difficulty": "intermediate",
+    "related_terms": ["relational-database", "primary-key", "sql"],
+    "tags": ["systems", "databases"]
+  },
+  {
+    "id": "api",
+    "term": "API",
+    "aliases": ["application programming interface"],
+    "short_summary": "A set of rules that allows different software applications to communicate with each other.",
+    "definition": "An API defines how software components should interact. It specifies the requests that can be made, how to make them, and the data formats to use. APIs enable integration between systems, such as a frontend talking to a backend or services talking to each other.",
+    "example": "A weather app uses a weather API to fetch current temperature data.",
+    "difficulty": "beginner",
+    "related_terms": ["rest-api", "http", "json"],
+    "tags": ["systems", "web"]
+  },
+  {
+    "id": "rest-api",
+    "term": "REST API",
+    "aliases": ["restful api"],
+    "short_summary": "An API architectural style that uses standard HTTP methods and stateless communication.",
+    "definition": "REST is an architectural style for designing networked applications. It uses HTTP methods like GET, POST, PUT, DELETE to operate on resources identified by URLs. RESTful APIs are stateless, meaning each request contains all information needed to process it.",
+    "example": "GET /users returns a list of users; POST /users creates a new user.",
+    "difficulty": "intermediate",
+    "related_terms": ["api", "http", "json"],
+    "tags": ["systems", "web"]
+  },
+  {
+    "id": "http",
+    "term": "HTTP",
+    "aliases": ["hypertext transfer protocol"],
+    "short_summary": "The protocol used for transferring data over the web between clients and servers.",
+    "definition": "HTTP is an application-layer protocol that defines how messages are formatted and transmitted between web clients and servers. It uses request methods like GET and POST and response status codes like 200 and 404.",
+    "example": "When you visit a website, your browser sends an HTTP GET request and the server responds with HTML.",
+    "difficulty": "beginner",
+    "related_terms": ["api", "rest-api", "json"],
+    "tags": ["systems", "web", "networking"]
+  },
+  {
+    "id": "json",
+    "term": "JSON",
+    "aliases": ["javascript object notation"],
+    "short_summary": "A lightweight text format for representing structured data using key-value pairs.",
+    "definition": "JSON is a human-readable data interchange format. It represents data as objects (dictionaries), arrays, strings, numbers, booleans, and null. JSON is widely used for APIs and configuration files.",
+    "example": "{\"name\": \"Alice\", \"age\": 30, \"active\": true} is a JSON object.",
+    "difficulty": "beginner",
+    "related_terms": ["api", "rest-api", "http"],
+    "tags": ["systems", "web", "formats"]
+  },
+  {
+    "id": "process",
+    "term": "Process",
+    "aliases": [],
+    "short_summary": "An independent program in execution with its own memory space.",
+    "definition": "A process is an instance of a running program. It has its own memory address space, code, data, and system resources. Processes are isolated from each other and communicate through inter-process communication mechanisms.",
+    "example": "Running a web browser and a text editor at the same time creates two separate processes.",
+    "difficulty": "intermediate",
+    "related_terms": ["thread", "operating-system", "memory"],
+    "tags": ["systems", "os"]
+  },
+  {
+    "id": "thread",
+    "term": "Thread",
+    "aliases": [],
+    "short_summary": "A lightweight unit of execution within a process that shares the process's memory.",
+    "definition": "A thread is the smallest unit of execution within a process. Multiple threads within the same process share memory and resources but execute independently. Threads enable parallelism and concurrency but require synchronization to avoid race conditions.",
+    "example": "A web browser uses separate threads for rendering the page, running JavaScript, and handling network requests.",
+    "difficulty": "intermediate",
+    "related_terms": ["process", "concurrency", "mutex", "deadlock"],
+    "tags": ["systems", "os"]
+  },
+  {
+    "id": "concurrency",
+    "term": "Concurrency",
+    "aliases": [],
+    "short_summary": "The ability of a system to handle multiple tasks by making progress on them within overlapping time periods.",
+    "definition": "Concurrency is about dealing with multiple tasks at once, which may or may not execute simultaneously. It is concerned with structuring a program to handle multiple activities, such as through threading, async programming, or multiprocessing.",
+    "example": "A single-core CPU switches rapidly between applications, creating the illusion of simultaneous execution.",
+    "difficulty": "intermediate",
+    "related_terms": ["thread", "parallelism", "mutex", "deadlock"],
+    "tags": ["systems", "os"]
+  },
+  {
+    "id": "parallelism",
+    "term": "Parallelism",
+    "aliases": [],
+    "short_summary": "The simultaneous execution of multiple tasks using multiple processors or cores.",
+    "definition": "Parallelism is the execution of multiple computations at the same time, typically on multi-core processors. Unlike concurrency, which is about structure, parallelism is about actually running tasks simultaneously to improve performance.",
+    "example": "A video editor uses all CPU cores to render different frames in parallel.",
+    "difficulty": "intermediate",
+    "related_terms": ["concurrency", "thread", "process"],
+    "tags": ["systems", "os"]
+  },
+  {
+    "id": "deadlock",
+    "term": "Deadlock",
+    "aliases": [],
+    "short_summary": "A situation where two or more threads are blocked forever, each waiting for the other to release a resource.",
+    "definition": "Deadlock occurs in concurrent systems when each of two or more threads holds a resource and waits for another resource held by a different thread. Without external intervention, none of the threads can proceed.",
+    "example": "Thread A holds lock 1 and waits for lock 2, while Thread B holds lock 2 and waits for lock 1.",
+    "difficulty": "advanced",
+    "related_terms": ["thread", "mutex", "concurrency"],
+    "tags": ["systems", "os"]
+  },
+  {
+    "id": "mutex",
+    "term": "Mutex",
+    "aliases": ["mutual exclusion"],
+    "short_summary": "A synchronization primitive that prevents multiple threads from accessing a shared resource at the same time.",
+    "definition": "A mutex is a lock that allows only one thread to access a critical section of code at a time. It prevents race conditions by ensuring mutual exclusion when multiple threads need to read or write shared data.",
+    "example": "Two threads updating a shared counter must acquire the mutex first to avoid losing updates.",
+    "difficulty": "advanced",
+    "related_terms": ["thread", "concurrency", "deadlock", "semaphore"],
+    "tags": ["systems", "os"]
+  },
+  {
+    "id": "semaphore",
+    "term": "Semaphore",
+    "aliases": [],
+    "short_summary": "A synchronization variable that controls access to a resource by multiple threads.",
+    "definition": "A semaphore is a synchronization primitive that maintains a counter. Threads acquire the semaphore to decrement the counter and release it to increment. A binary semaphore behaves like a mutex; a counting semaphore allows a limited number of threads to access a resource.",
+    "example": "A parking lot semaphore allows only N cars to enter; additional cars wait until one leaves.",
+    "difficulty": "advanced",
+    "related_terms": ["mutex", "thread", "concurrency"],
+    "tags": ["systems", "os"]
+  },
+  {
+    "id": "operating-system",
+    "term": "Operating System",
+    "aliases": ["os"],
+    "short_summary": "System software that manages computer hardware and provides services for applications.",
+    "definition": "An operating system is software that manages computer hardware resources, provides common services for programs, and acts as an intermediary between users and hardware. It handles process scheduling, memory management, file systems, and I/O operations.",
+    "example": "Windows, macOS, Linux, and Android are operating systems.",
+    "difficulty": "beginner",
+    "related_terms": ["process", "thread", "memory"],
+    "tags": ["systems", "os"]
+  },
+  {
+    "id": "string",
+    "term": "String",
+    "aliases": ["text"],
+    "short_summary": "A sequence of characters used to represent text in programs.",
+    "definition": "A string is a data type that stores a sequence of characters. Strings are immutable in many languages, meaning their contents cannot be changed after creation. Common operations include concatenation, slicing, searching, and formatting.",
+    "example": "name = 'Alice' is a string containing five characters.",
+    "difficulty": "beginner",
+    "related_terms": ["data-type", "array", "trie"],
+    "tags": ["fundamentals", "programming-concepts"]
+  },
+  {
+    "id": "boolean",
+    "term": "Boolean",
+    "aliases": ["bool"],
+    "short_summary": "A data type with only two possible values: true or false.",
+    "definition": "A boolean is a primitive data type that represents logical values: true or false. Booleans are the result of comparisons and logical operations and are essential for control flow and decision making.",
+    "example": "is_valid = True; if is_valid: print('ok') runs only when is_valid is true.",
+    "difficulty": "beginner",
+    "related_terms": ["data-type", "conditional"],
+    "tags": ["fundamentals", "programming-concepts"]
+  },
+  {
+    "id": "pseudocode",
+    "term": "Pseudocode",
+    "aliases": [],
+    "short_summary": "An informal description of an algorithm written in plain language, not a real programming language.",
+    "definition": "Pseudocode is a high-level, human-readable description of an algorithm's logic. It uses natural language mixed with programming-like constructs to explain steps without worrying about syntax rules of a specific language.",
+    "example": "Pseudocode for finding the maximum: set max to first number, for each number, if number > max, set max to number.",
+    "difficulty": "beginner",
+    "related_terms": ["algorithm"],
+    "tags": ["fundamentals"]
+  },
+  {
+    "id": "root",
+    "term": "Root",
+    "aliases": [],
+    "short_summary": "The topmost node in a tree, with no parent.",
+    "definition": "The root is the highest node in a tree data structure. All other nodes are descendants of the root. A tree has exactly one root, and every node except the root has exactly one parent.",
+    "example": "In a file system tree, the root directory is represented by /.",
+    "difficulty": "beginner",
+    "related_terms": ["tree", "node", "binary-tree"],
+    "tags": ["data-structures", "fundamentals"]
+  },
+  {
+    "id": "dynamic-array",
+    "term": "Dynamic Array",
+    "aliases": ["vector", "array list", "arraylist"],
+    "short_summary": "An array that resizes itself automatically as elements are added or removed.",
+    "definition": "A dynamic array is a resizable array that grows or shrinks as needed. It typically over-allocates memory and copies elements to a larger buffer when full, giving amortized O(1) append time.",
+    "example": "Python lists and Java ArrayLists are dynamic arrays.",
+    "difficulty": "intermediate",
+    "related_terms": ["array"],
+    "tags": ["data-structures"]
+  }
+]
