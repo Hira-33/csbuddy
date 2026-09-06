@@ -12,6 +12,6 @@ services:
       - key: PYTHON_VERSION
         value: 3.12.0
       - key: CORS_ORIGINS
-        value: https://csbuddy.vercel.app
+        value: https://csbuddy.vercel.app,https://csbuddy-*.vercel.app,https://offbeat-code-buddy-hub.base44.app,http://localhost:5173
       - key: ADMIN_TOKEN
         generateValue: true

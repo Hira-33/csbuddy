@@ -25,7 +25,7 @@ export function DiagramViewer({ source }) {
 
   if (error) {
     return (
-      <div className="rounded-lg bg-red-50 p-3 text-sm text-red-700">
+      <div className="rounded-xl bg-red-50 p-4 text-sm text-red-700">
         Failed to render diagram: {error}
       </div>
     )
@@ -33,7 +33,7 @@ export function DiagramViewer({ source }) {
 
   return (
     <div
-      className="overflow-auto rounded-lg border border-slate-200 bg-white p-4"
+      className="overflow-auto rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
       dangerouslySetInnerHTML={{ __html: svg }}
     />
   )

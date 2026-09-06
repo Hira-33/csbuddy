@@ -2,6 +2,63 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  @apply bg-slate-50 text-slate-900 antialiased;
+  @apply bg-slate-100 text-slate-900 antialiased;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Markdown prose overrides inside assistant bubbles */
+.message-markdown p {
+  margin-bottom: 0.75rem;
+}
+
+.message-markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.message-markdown code {
+  @apply rounded bg-slate-100 px-1.5 py-0.5 text-sm font-medium text-slate-700;
+}
+
+.message-markdown pre {
+  @apply overflow-x-auto rounded-lg bg-slate-900 p-3 text-sm text-slate-50;
+}
+
+.message-markdown pre code {
+  @apply bg-transparent p-0 text-slate-50;
+}
+
+.message-markdown strong {
+  @apply font-semibold text-slate-900;
+}
+
+.message-markdown ul {
+  @apply list-disc space-y-1 pl-5;
+}
+
+.message-markdown ol {
+  @apply list-decimal space-y-1 pl-5;
 }

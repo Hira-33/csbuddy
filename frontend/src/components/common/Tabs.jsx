@@ -1,17 +1,20 @@
 export function Tabs({ tabs, activeTab, onChange }) {
   return (
-    <div className="flex border-b border-slate-200">
+    <div className="flex border-b border-slate-100 bg-slate-50/50 px-2">
       {tabs.map((tab) => (
         <button
           key={tab.id}
           onClick={() => onChange(tab.id)}
-          className={`px-4 py-2 text-sm font-medium ${
+          className={`relative px-4 py-3 text-sm font-medium transition ${
             activeTab === tab.id
-              ? 'border-b-2 border-blue-600 text-blue-600'
-              : 'text-slate-600 hover:text-slate-800'
+              ? 'text-indigo-600'
+              : 'text-slate-500 hover:text-slate-700'
           }`}
         >
           {tab.label}
+          {activeTab === tab.id && (
+            <span className="absolute bottom-0 left-0 right-0 h-0.5 rounded-t bg-indigo-600" />
+          )}
         </button>
       ))}
     </div>

@@ -19,6 +19,8 @@ function parseSseEvent(chunk) {
   }
 }
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || ''
+
 export async function streamAsk({
   query,
   termId,
@@ -28,7 +30,7 @@ export async function streamAsk({
   abortSignal,
 }) {
   try {
-    const response = await fetch('/api/ask', {
+    const response = await fetch(`${API_BASE}/api/ask`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

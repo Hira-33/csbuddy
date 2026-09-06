@@ -35,5 +35,5 @@ class GraphService:
                 frontier = next_frontier
             graph = graph.subgraph(nodes).copy()
 
-        data = nx.node_link_data(graph)
+        data = nx.node_link_data(graph, edges="links")
         return {"nodes": data["nodes"], "links": data["links"]}

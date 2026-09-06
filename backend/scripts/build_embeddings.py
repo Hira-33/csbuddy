@@ -10,6 +10,7 @@ from app.services.repository import JsonTermRepository
 
 def main() -> int:
     settings = get_settings()
+    settings.artifacts_dir.mkdir(parents=True, exist_ok=True)
     repo = JsonTermRepository(settings.terms_path)
     engine = MatchEngine(repo, settings)
     print(f"Building embeddings for {len(repo.all())} terms...")

@@ -24,7 +24,7 @@ export function VoiceButton({ onTranscript, disabled }) {
       className={`rounded-full p-2 transition ${
         listening
           ? 'animate-pulse bg-red-100 text-red-600'
-          : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+          : 'text-slate-500 hover:bg-slate-200 hover:text-slate-700'
       } disabled:opacity-50`}
     >
       {listening ? (

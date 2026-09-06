@@ -22,6 +22,24 @@ export function ConceptGraph({ data, rootId, onSelectTerm }) {
     svg.selectAll('*').remove()
     svg.attr('width', width).attr('height', height)
 
+    // Subtle grid background
+    const gridSize = 24
+    const defs = svg.append('defs')
+    const pattern = defs
+      .append('pattern')
+      .attr('id', 'grid')
+      .attr('width', gridSize)
+      .attr('height', gridSize)
+      .attr('patternUnits', 'userSpaceOnUse')
+    pattern
+      .append('circle')
+      .attr('cx', gridSize / 2)
+      .attr('cy', gridSize / 2)
+      .attr('r', 1)
+      .attr('fill', '#cbd5e1')
+      .attr('opacity', 0.4)
+    svg.append('rect').attr('width', width).attr('height', height).attr('fill', 'url(#grid)')
+
     const nodes = data.nodes.map((n) => ({ ...n }))
     const links = data.links.map((l) => ({ ...l }))
 
@@ -29,11 +47,11 @@ export function ConceptGraph({ data, rootId, onSelectTerm }) {
       .forceSimulation(nodes)
       .force(
         'link',
-        d3.forceLink(links).id((d) => d.id).distance(90)
+        d3.forceLink(links).id((d) => d.id).distance(100)
       )
-      .force('charge', d3.forceManyBody().strength(-350))
+      .force('charge', d3.forceManyBody().strength(-400))
       .force('center', d3.forceCenter(width / 2, height / 2))
-      .force('collide', d3.forceCollide(28))
+      .force('collide', d3.forceCollide(32))
 
     const g = svg.append('g')
 
@@ -51,7 +69,7 @@ export function ConceptGraph({ data, rootId, onSelectTerm }) {
     const link = g
       .append('g')
       .attr('stroke', '#94a3b8')
-      .attr('stroke-opacity', 0.6)
+      .attr('stroke-opacity', 0.5)
       .selectAll('line')
       .data(links)
       .join('line')
@@ -85,17 +103,25 @@ export function ConceptGraph({ data, rootId, onSelectTerm }) {
 
     node
       .append('circle')
-      .attr('r', (d) => (d.id === rootId ? 10 : 7))
+      .attr('r', (d) => (d.id === rootId ? 12 : 8))
       .attr('fill', (d) => difficultyColor[d.difficulty] || '#64748b')
       .attr('stroke', '#fff')
-      .attr('stroke-width', 2)
+      .attr('stroke-width', (d) => (d.id === rootId ? 3 : 2))
+      .attr('class', 'transition-all duration-200')
+      .on('mouseover', function () {
+        d3.select(this).attr('r', +d3.select(this).attr('r') + 2)
+      })
+      .on('mouseout', function () {
+        d3.select(this).attr('r', +d3.select(this).attr('r') - 2)
+      })
 
     node
       .append('text')
-      .attr('dx', 12)
+      .attr('dx', 14)
       .attr('dy', 4)
       .text((d) => d.label)
-      .attr('font-size', '11px')
+      .attr('font-size', '12px')
+      .attr('font-weight', '500')
       .attr('fill', '#334155')
       .attr('pointer-events', 'none')
 
