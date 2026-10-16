@@ -1,8 +1,9 @@
 from functools import lru_cache
 from pathlib import Path
+from typing import Annotated
 
 from pydantic import field_validator
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, SettingsConfigDict, NoDecode
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -33,7 +34,10 @@ class Settings(BaseSettings):
 
     # Comma-separated list of allowed frontend origins. Defaults to the Vite
     # dev server; set explicitly in production (e.g. https://csbuddy.vercel.app).
-    cors_origins: list[str] = ["http://localhost:5173", "http://127.0.0.1:5173"]
+    cors_origins: Annotated[list[str], NoDecode] = [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+    ]
     admin_token: str | None = None
 
     @field_validator("cors_origins", mode="before")
